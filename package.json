@@ -1,6 +1,6 @@
 {
   "name": "postcss-pxtocssvar",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "PostCSS plugin convert px to calc(var(--base))",
   "keywords": [
     "postcss",
