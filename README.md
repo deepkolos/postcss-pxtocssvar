@@ -8,7 +8,7 @@
 
 ```css
 html {
-    --base: calc(1080 / 385);
+    --base: calc(385 / 1080);
 }
 
 .foo {
@@ -18,7 +18,7 @@ html {
 
 ```css
 html {
-    --base: calc(1080 / 385);
+    --base: calc(385 / 1080);
 }
 
 .foo {
