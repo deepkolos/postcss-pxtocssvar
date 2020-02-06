@@ -54,3 +54,17 @@ it('calc嵌套', function() {
     {}
   )
 })
+
+it('浮点数', function() {
+  return run(
+    `
+#main {
+    width: 12.3px;
+}`,
+    `
+#main {
+    width: calc(12.3px * var(--base));
+}`,
+    {}
+  )
+})
