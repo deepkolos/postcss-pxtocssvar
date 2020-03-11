@@ -2,6 +2,11 @@
 
 [PostCSS] plugin convert px to calc(var(--base)).
 
+用于解决的情况:
+
+1. webview高度由内容撑开, 而preact + vw/rem布局无法撑开webview
+2. webview宽度不固定, 比如小卡webview加边距, 大卡webview占满, 而小卡内容需要在类似占满的比例展示
+
 [PostCSS]: https://github.com/postcss/postcss
 [ci-img]:  https://travis-ci.org/deepkolos/postcss-pxtocssvar.svg
 [ci]:      https://travis-ci.org/deepkolos/postcss-pxtocssvar
