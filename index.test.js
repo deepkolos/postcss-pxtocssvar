@@ -7,13 +7,13 @@ var plugin = require('./')
 function run(input, output, opts) {
   return postcss([plugin(opts)])
     .process(input)
-    .then(function(result) {
+    .then(function (result) {
       expect(result.css).toEqual(output)
       expect(result.warnings()).toHaveLength(0)
     })
 }
 
-it('测试单个值', function() {
+it('测试单个值', function () {
   return run(
     `
 #main {
@@ -27,7 +27,7 @@ it('测试单个值', function() {
   )
 })
 
-it('测试混合值', function() {
+it('测试混合值', function () {
   return run(
     `
 #main {
@@ -41,7 +41,7 @@ it('测试混合值', function() {
   )
 })
 
-it('calc嵌套', function() {
+it('calc嵌套', function () {
   return run(
     `
 #main {
@@ -55,7 +55,7 @@ it('calc嵌套', function() {
   )
 })
 
-it('浮点数', function() {
+it('浮点数', function () {
   return run(
     `
 #main {
@@ -68,3 +68,45 @@ it('浮点数', function() {
     {}
   )
 })
+
+it('负数', function () {
+  return run(
+    `
+#main {
+    width: -12.3px;
+}`,
+    `
+#main {
+    width: calc(-12.3px * var(--base));
+}`,
+    {}
+  )
+})
+
+it('不包含减号', function () {
+  return run(
+    `
+#main {
+    width: 1px - 12.3px;
+}`,
+    `
+#main {
+    width: calc(1px * var(--base)) - calc(12.3px * var(--base));
+}`,
+    {}
+  )
+})
+
+// it('减号可以不加空格', function () {
+//   return run(
+//     `
+// #main {
+//     width: 1px-12.3px;
+// }`,
+//     `
+// #main {
+//     width: calc(1px * var(--base)) - calc(12.3px * var(--base));
+// }`,
+//     {}
+//   )
+// })

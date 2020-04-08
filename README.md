@@ -38,3 +38,8 @@ postcss([ require('postcss-pxtocssvar') ])
 ```
 
 See [PostCSS] docs for examples for your environment.
+
+
+## 已知问题
+
+减号需要加空格: 1px - 2px
